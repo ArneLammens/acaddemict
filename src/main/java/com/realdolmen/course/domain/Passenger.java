@@ -32,6 +32,14 @@ public class Passenger {
     private PassengerType passengerType;
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastFlight;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateLastUpdated;
+
+    @PrePersist
+    @PreUpdate
+    private void updateDateListUpdated(){
+        this.dateLastUpdated = new Date();
+    }
 
 
     public Passenger() {
@@ -86,5 +94,9 @@ public class Passenger {
 
     public Date getLastFlight() {
         return lastFlight;
+    }
+
+    public Date getDateLastUpdated() {
+        return dateLastUpdated;
     }
 }

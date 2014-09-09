@@ -19,13 +19,16 @@ public class PassengerPersistenceTest extends PersistenceTest {
     @Test
     public void passengerIsPersisted() throws Exception {
         Passenger passenger = new Passenger("test","Benjamin","Pieteraerents",200,new Date(),25, Passenger.PassengerType.OCCASIONAL,new Date());
+        org.junit.Assert.assertNull(passenger.getDateLastUpdated());
         entityManager().persist(passenger);
         Assert.assertNotNull(passenger);
+        org.junit.Assert.assertNotNull(passenger.getDateLastUpdated());
+
     }
 
     @Test
     public void testAgeCalculation() throws Exception {
         Passenger passenger = new Passenger("test","Benjamin","Pieteraerents",200,new Date(),25, Passenger.PassengerType.OCCASIONAL,new Date());
-        org.junit.Assert.assertTrue("Error - age not right",passenger.getAge() == 0);
+        org.junit.Assert.assertTrue("Error - age not right", passenger.getAge() == 0);
     }
 }
