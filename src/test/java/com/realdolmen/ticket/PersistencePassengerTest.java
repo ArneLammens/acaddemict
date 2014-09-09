@@ -25,5 +25,6 @@ public class PersistencePassengerTest extends PersistenceTest
     {
         Passenger pas =entityManager().find(Passenger.class, 1l);
         System.out.println(pas.getAge());
+
     }
 }
