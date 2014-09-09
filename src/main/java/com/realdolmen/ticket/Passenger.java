@@ -37,6 +37,15 @@ public class Passenger
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastFlights;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateLastUpdated;
+
+    @PrePersist
+    @PreUpdate
+    private void updateDate()
+    {
+        this.dateLastUpdated=new Date();
+    }
     protected Passenger() {
 
     }
@@ -96,5 +105,9 @@ public class Passenger
 
     public Date getLastFlights() {
         return lastFlights;
+    }
+
+    public Date getDateLastUpdated() {
+        return dateLastUpdated;
     }
 }
