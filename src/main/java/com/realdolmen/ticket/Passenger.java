@@ -1,6 +1,8 @@
 package com.realdolmen.ticket;
 
 import com.sun.istack.internal.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
@@ -12,10 +14,12 @@ import java.util.Date;
 @Entity
 public class Passenger
 {
+
     public static enum PassengerType
     {
         regular,occasional
     }
+    private static Logger logger= LoggerFactory.getLogger(Passenger.class);
     @Id
     @GeneratedValue
     private Long id;
@@ -44,6 +48,7 @@ public class Passenger
     @PreUpdate
     private void updateDate()
     {
+        logger.info("gegenereed datum for "+this.getFirstName());
         this.dateLastUpdated=new Date();
     }
     protected Passenger() {

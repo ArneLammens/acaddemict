@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.transaction.TransactionManager;
 
 public class PersistenceTest
 {
@@ -56,6 +57,6 @@ public class PersistenceTest
     {
         return this.em;
     }
-
+    protected EntityTransaction et(){return this.et;}
 
 }
