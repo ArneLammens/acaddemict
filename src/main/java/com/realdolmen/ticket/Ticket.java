@@ -3,11 +3,12 @@ package com.realdolmen.ticket;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
-public class Ticket
+public class Ticket implements Serializable
 {
     @Id
     @GeneratedValue

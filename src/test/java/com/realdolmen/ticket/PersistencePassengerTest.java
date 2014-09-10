@@ -10,6 +10,7 @@ import static org.junit.Assert.assertNull;
 
 public class PersistencePassengerTest extends PersistenceTest
 {
+
     @Test
     public void passengerPersist() throws Exception
     {

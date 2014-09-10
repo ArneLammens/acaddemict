@@ -9,56 +9,56 @@ import java.util.Date;
 
 public class TicketPersistenceTest extends PersistenceTest
 {
-    private Ticket ticket =new Ticket() ;
+    private Ticket ticket ;
+    private Long id;
+
     @Test
     public void testcreate() throws Exception
     {
-         ticket= new Ticket(new BigDecimal(12),new Date(),"London");
+        ticket= new Ticket(new BigDecimal(12),new Date(),"London");
         entityManager().persist(ticket);
         assertNotNull(ticket.getId());
-
+        id=ticket.getId();
 
     }
 
     @Test
     public void testRetrieve() throws Exception {
-        Ticket ticket = entityManager().find(Ticket.class,ticket);
+        System.out.println(id);
+        ticket = entityManager().find(Ticket.class,3l);
         assertNotNull(ticket);
 
     }
 
     @Test
     public void testUpdate() throws Exception {
-        Ticket ticket = entityManager().find(Ticket.class,1l);
+        ticket = entityManager().find(Ticket.class,3l);
         ticket.setDestination("parijs");
-        Ticket ticket2 = entityManager().find(Ticket.class,1l);
+        Ticket ticket2 = entityManager().find(Ticket.class,3l);
         assertEquals("parijs", ticket2.getDestination());
     }
 
     @Test
     public void testUpdateMerge() throws Exception {
-        et().begin();
-        Ticket ticket = entityManager().find(Ticket.class,1l);
-        et().commit();
+
+        ticket = entityManager().find(Ticket.class,3l);
         entityManager().clear();
         ticket.setDestination("Mexico");
-
-        et().begin();
         entityManager().merge(ticket);
-        et().commit();
 
-        ticket =entityManager().find(Ticket.class,1l);
+
+        ticket =entityManager().find(Ticket.class,3l);
         assertEquals("Mexico",ticket.getDestination());
     }
 
-    @Test
+   /* @Test
     public void testdelete() throws Exception {
-        Ticket tick =entityManager().getReference(Ticket.class,1l);
+        ticket =entityManager().getReference(Ticket.class,2l);
 
-        entityManager().remove(tick);
+        entityManager().remove(ticket);
         entityManager().flush();
-        assertNull(entityManager().find(Ticket.class,1L));
+        assertNull(entityManager().find(Ticket.class,2l));
 
-    }
+    }*/
 
 }
