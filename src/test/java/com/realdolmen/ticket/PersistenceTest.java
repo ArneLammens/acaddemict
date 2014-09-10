@@ -24,7 +24,7 @@ public class PersistenceTest
     @BeforeClass
     public static void initializeEntityManagerFactory()
     {
-        emf=Persistence.createEntityManagerFactory( "TicketPU");
+        emf=Persistence.createEntityManagerFactory("TicketPU");
     }
     /*altijd voor elke test uitvoeren*/
     @Before

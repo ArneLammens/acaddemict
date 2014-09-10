@@ -15,7 +15,12 @@ public class TicketPersistenceTest extends PersistenceTest
     @Test
     public void testcreate() throws Exception
     {
-        ticket= new Ticket(new BigDecimal(12),new Date(),"London");
+        Passenger pas= new Passenger("snn","arne","lammens",0,null,new Date(),Passenger.PassengerType.occasional,new Date());
+        entityManager().persist(pas);
+        Flight f = new Flight("1245",new Date(),new Date());
+        entityManager().persist(f);
+        entityManager().flush();
+        ticket= new Ticket(new BigDecimal(12),new Date(),"London",pas,f);
         entityManager().persist(ticket);
         assertNotNull(ticket.getId());
         id=ticket.getId();

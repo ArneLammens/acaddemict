@@ -3,6 +3,7 @@ package com.realdolmen.ticket;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -17,13 +18,25 @@ public class Ticket implements Serializable
     private Date DateOfDeparture;
     private String Destination;
 
+    @ManyToOne
+    private Passenger passenger;
+
+    @ManyToOne
+    private Flight flight;
+
     protected Ticket() {
     }
 
-    public Ticket(BigDecimal price, Date dateOfDeparture, String destination) {
+    public Ticket(BigDecimal price, Date dateOfDeparture, String destination, Passenger passenger, Flight flight) {
         this.price = price;
         DateOfDeparture = dateOfDeparture;
         Destination = destination;
+        this.passenger = passenger;
+        this.flight = flight;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public BigDecimal getPrice() {
@@ -38,9 +51,11 @@ public class Ticket implements Serializable
         return Destination;
     }
 
-    public Long getId() {
-        return id;
+    public Passenger getPassenger() {
+        return passenger;
     }
+
+
 
     public void setId(Long id) {
         this.id = id;
@@ -56,5 +71,18 @@ public class Ticket implements Serializable
 
     public void setDestination(String destination) {
         Destination = destination;
+    }
+
+    public void setPassenger(Passenger passenger) {
+        this.passenger = passenger;
+    }
+
+
+    public Flight getFlight() {
+        return flight;
+    }
+
+    public void setFlight(Flight flight) {
+        this.flight = flight;
     }
 }

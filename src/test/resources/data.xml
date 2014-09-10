@@ -1,4 +1,10 @@
 <dataset>
     <passenger id="1" ssn="iets" firstName="george" lastname="orwell" dateOfBirth="2014-09-10" frequentFlyerMiles="0"/>
     <passenger id="2" ssn="anders" firstName="jimmy" lastname="woefels" dateOfBirth="2014-09-9" frequentFlyerMiles="0"/>
+
+
+
+
+    <flight id="1" blacklisted="1" DTYPE="InternationalFlight" dayOfArrival="2014-09-9" dayOfDeparture="2014-09-9" number="1235ben"></flight>
+    <flight id="2" DTYPE="DomesticFlight" dayOfArrival="2014-09-11" dayOfDeparture="2014-09-15" number="45ghkt69"></flight>
 </dataset>

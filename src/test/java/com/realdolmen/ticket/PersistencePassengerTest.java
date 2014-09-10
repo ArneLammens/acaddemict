@@ -10,7 +10,7 @@ import static org.junit.Assert.assertNull;
 
 public class PersistencePassengerTest extends DatasetPersistenceTest
 {
-
+/*
     @Test
     public void passengerPersist() throws Exception
     {
@@ -32,7 +32,7 @@ public class PersistencePassengerTest extends DatasetPersistenceTest
     @Test
     public void PersisteBeforPersite() throws Exception
     {
-        Passenger pas= new Passenger("ssn","arne","lammens",125,null,new Date(),25,Passenger.PassengerType.occasional,new Date());
+       // Passenger pas= new Passenger("ssn","arne","lammens",125,null,new Date(),25,Passenger.PassengerType.occasional,new Date());
        assertNull(pas.getDateLastUpdated());
         entityManager().persist(pas);
         assertNotNull(pas.getDateLastUpdated());
@@ -45,6 +45,6 @@ public class PersistencePassengerTest extends DatasetPersistenceTest
         entityManager().persist(pas);
         assertNotNull(pas.getDateLastUpdated());
 
-    }
+    }*/
 
 }

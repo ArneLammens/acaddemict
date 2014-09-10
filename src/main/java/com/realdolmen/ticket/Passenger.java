@@ -5,8 +5,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.persistence.*;
+import javax.persistence.metamodel.CollectionAttribute;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by almau78 on 8/09/2014.
@@ -40,9 +44,23 @@ public class Passenger
     private PassengerType passengerType;
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastFlights;
+    @Embedded
+    private Address adress;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateLastUpdated;
+
+    @OneToMany(mappedBy = "passenger")
+    private List<Ticket> tickets =new ArrayList<>();
+
+/*    @ManyToMany
+    @JoinTable(
+                name="ticket_passenger",
+                joinColumns = @JoinColumn(name=" passenger_id"),
+                inverseJoinColumns = @JoinColumn(name="ticket_id")
+    )*/
+
+
 
     @PrePersist
     @PreUpdate
@@ -55,14 +73,13 @@ public class Passenger
 
     }
 
-    public Passenger(String ssn, String firstName, String lastname, int frequentFlyerMiles, byte[] picture, Date dateOfBirth, Integer age, PassengerType passengerType, Date lastFlights) {
+    public Passenger(String ssn, String firstName, String lastname, int frequentFlyerMiles, byte[] picture, Date dateOfBirth,  PassengerType passengerType, Date lastFlights) {
         this.ssn = ssn;
         this.firstName = firstName;
         this.lastname = lastname;
         this.frequentFlyerMiles = frequentFlyerMiles;
         this.picture = picture;
         this.dateOfBirth = dateOfBirth;
-        this.age = age;
         this.passengerType = passengerType;
         this.lastFlights = lastFlights;
     }
@@ -115,4 +132,6 @@ public class Passenger
     public Date getDateLastUpdated() {
         return dateLastUpdated;
     }
+
+
 }
