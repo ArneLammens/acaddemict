@@ -8,7 +8,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 
-public class PersistencePassengerTest extends PersistenceTest
+public class PersistencePassengerTest extends DatasetPersistenceTest
 {
 
     @Test
